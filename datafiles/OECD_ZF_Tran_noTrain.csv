@@ -1,0 +1,455 @@
+index,sql
+0,"('SELECT COUNT(DISTINCT chemical_id) FROM chemicals;',    COUNT(DISTINCT chemical_id)
+0                           34, None)"
+1,"('SELECT endpoint_id, endpoint_name, endpoint_desc FROM endpoints;',     endpoint_id      endpoint_name  \
+0             1  log10_D1@both_auc   
+1             2  log10_D2@both_auc   
+2             3  log10_L1@both_auc   
+3             4  log10_L2@both_auc   
+4             5                 D1   
+5             6                 D2   
+6             7                 L1   
+7             8                 L2   
+8             9          D1@up_auc   
+9            10        D1@down_auc   
+10           11        D1@both_auc   
+11           12          D2@up_auc   
+12           13        D2@down_auc   
+13           14        D2@both_auc   
+14           15          L1@up_auc   
+15           16        L1@down_auc   
+16           17        L1@both_auc   
+17           18          L2@up_auc   
+18           19        L2@down_auc   
+19           20        L2@both_auc   
+20           21     Zt_LD_spearman   
+21           22      Zt_LD_pearson   
+22           23        LD_spearman   
+23           24         LD_pearson   
+
+                                        endpoint_desc  
+0   log10(relative AUC at a phase only for perturb...  
+1   log10(relative AUC at a phase only for perturb...  
+2   log10(relative AUC at a phase only for perturb...  
+3   log10(relative AUC at a phase only for perturb...  
+4   absolute AUC at a phase normalized with median...  
+5   absolute AUC at a phase normalized with median...  
+6   absolute AUC at a phase normalized with median...  
+7   absolute AUC at a phase normalized with median...  
+8   relative AUC at a phase and no normalization a...  
+9   relative AUC at a phase and no normalization a...  
+10  relative AUC at a phase and no normalization a...  
+11  relative AUC at a phase and no normalization a...  
+12  relative AUC at a phase and no normalization a...  
+13  relative AUC at a phase and no normalization a...  
+14  relative AUC at a phase and no normalization a...  
+15  relative AUC at a phase and no normalization a...  
+16  relative AUC at a phase and no normalization a...  
+17  relative AUC at a phase and no normalization a...  
+18  relative AUC at a phase and no normalization a...  
+19  relative AUC at a phase and no normalization a...  
+20  FisherZ(movement pattern similarity) normalize...  
+21  FisherZ(movement pattern similarity) normalize...  
+22  movement pattern similarity normalized with me...  
+23  movement pattern similarity normalized with me...  , None)"
+2,"('SELECT plate_name, plate_stage FROM plates;',                       plate_name  plate_stage
+0    biobide_1588_1_v1:Plate3-R1  proficiency
+1    biobide_1588_1_v1:Plate3-R2  proficiency
+2    biobide_1588_1_v1:Plate3-R3  proficiency
+3    biobide_1359_1_v1:Plate2-R1  proficiency
+4    biobide_1359_1_v1:Plate2-R2  proficiency
+..                           ...          ...
+250           osu_nc_3:OECD-0171  proficiency
+251           osu_nc_3:OECD-0169  proficiency
+252           osu_nc_4:OECD-0174  proficiency
+253           osu_nc_4:OECD-0173  proficiency
+254           osu_nc_4:OECD-0166  proficiency
+
+[255 rows x 2 columns], None)"
+3,"('SELECT COUNT(DISTINCT well_type) FROM well_types;',    COUNT(DISTINCT well_type)
+0                          2, None)"
+4,"('SELECT * FROM phases;',    phase_code source_code
+0          L1           a
+1          D1           a
+2          L2           a
+3          D2           a
+4          L0           b
+5          D0           b
+6          L1           b
+7          D1           b
+8          L2           b
+9          D2           b
+10         L1           c
+11         D1           c
+12         L2           c
+13         D2           c
+14         L3           c
+15         D3           c
+16         L1           d
+17         D1           d
+18         L2           d
+19         D2           d, None)"
+5,"('SELECT COUNT(*) FROM behavior_data;',    COUNT(*)
+0   2539392, None)"
+6,"('SELECT DISTINCT concentration_unit FROM devtox_data;',   concentration_unit
+0                 uM
+1                  %, None)"
+7,"('SELECT bin_id, bin_range FROM bins;',      bin_id        bin_range
+0         1    Start-0:01:00
+1         2  0:01:00-0:02:00
+2         3  0:02:00-0:03:00
+3         4  0:03:00-0:04:00
+4         5  0:04:00-0:05:00
+..      ...              ...
+193     194    0:5:00-0:6:00
+194     195    0:6:00-0:7:00
+195     196    0:7:00-0:8:00
+196     197    0:8:00-0:9:00
+197     198   0:9:00-0:10:00
+
+[198 rows x 2 columns], None)"
+8,"('SELECT DISTINCT source_code FROM plates;',   source_code
+0           a
+1           b
+2           c
+3           d, None)"
+9,"('SELECT COUNT(*) FROM endpoint_data;',    COUNT(*)
+0    479784, None)"
+10,"(""SELECT * FROM behavior_data WHERE devtox_data_id IN (SELECT devtox_data_id FROM devtox_data dev JOIN chemicals che ON dev.chemical_id = che.chemical_id WHERE che.preferred_name = 'Ibuprofen');"",        devtox_data_id phase_code  bin_id  distance_moved  time_end
+0                1153         L1      51        79.39530         1
+1                1153         L1       2        86.42750         2
+2                1153         L1       3        51.84010         3
+3                1153         L1       4        22.95810         4
+4                1153         L1       5         0.87298         5
+...               ...        ...     ...             ...       ...
+51235           24287         D3     187        73.23400       176
+51236           24287         D3     188       148.26100       177
+51237           24287         D3     189       235.57200       178
+51238           24287         D3     190       345.18900       179
+51239           24287         D3     191       285.89600       180
+
+[51240 rows x 5 columns], None)"
+11,"('SELECT SUM(n_malformed_dead) AS total_malformed_dead\nFROM devtox_data_sum;',    total_malformed_dead
+0                  3158, None)"
+12,"('SELECT che.preferred_name, COUNT(*) AS positive_reaction_count\nFROM devtox_data dev\nJOIN chemicals che ON dev.chemical_id = che.chemical_id\nWHERE dev.malformed_dead = 1\nGROUP BY che.preferred_name;',                            preferred_name  positive_reaction_count
+0         2-Ethylhexyl diphenyl phosphate                       76
+1         3,3',5,5'-Tetrabromobisphenol A                      135
+2                             Acetamiprid                       51
+3                                Aldicarb                       51
+4                               Allethrin                       86
+5                                 Benomyl                       18
+6                              Chloramben                       15
+7                            Chlorpyrifos                       46
+8                            Cypermethrin                       85
+9                            Deltamethrin                      443
+10                               Diazinon                       37
+11                               Dieldrin                      296
+12                      Diethylene glycol                       69
+13                             Dimethoate                        9
+14                               Glycerol                       48
+15                             Heptachlor                       82
+16                              Ibuprofen                       26
+17                                 Kepone                       47
+18                       Methyl parathion                       67
+19                               Nicotine                       29
+20                              Parathion                       82
+21                             Permethrin                      507
+22                              Saccharin                       47
+23                        Sodium benzoate                       15
+24                            Thiacloprid                       61
+25                 Tri-o-cresyl phosphate                      148
+26                            Trichlorfon                       90
+27     Triphenyl phosphates isopropylated                       31
+28  Tris(1,3-dichloro-2-propyl) phosphate                       29
+29          Tris(2-chloroethyl) phosphate                       14
+30       Tris(2-chloroisopropyl)phosphate                       23
+31           Tris(methylphenyl) phosphate                      148
+32                          Valproic acid                       39
+33    tert-Butylphenyl diphenyl phosphate                      103, None)"
+13,"('SELECT che.preferred_name, COUNT(*) AS effect_count\nFROM devtox_data dev\nJOIN chemicals che ON dev.chemical_id = che.chemical_id\nWHERE swim_bladder_deflated > 0\nGROUP BY che.preferred_name\nORDER BY effect_count DESC\nLIMIT 10;',                        preferred_name  effect_count
+0                            Dieldrin           181
+1                       Valproic acid           160
+2  Triphenyl phosphates isopropylated           148
+3                          Permethrin            90
+4    Tris(2-chloroisopropyl)phosphate            55
+5                         Trichlorfon            49
+6                              Kepone            49
+7                        Deltamethrin            44
+8                          Heptachlor            39
+9                        Chlorpyrifos            39, None)"
+14,"('SELECT che.preferred_name, SUM(d.n_malformed_dead) AS total_malformed_dead\nFROM devtox_data_sum d\nJOIN chemicals che ON d.chemical_id = che.chemical_id\nWHERE d.n_malformed_dead > 0\nGROUP BY che.preferred_name;',                            preferred_name  total_malformed_dead
+0         2-Ethylhexyl diphenyl phosphate                    76
+1         3,3',5,5'-Tetrabromobisphenol A                   135
+2                             Acetamiprid                    51
+3                                Aldicarb                    51
+4                               Allethrin                    86
+5                                 Benomyl                    18
+6                              Chloramben                    15
+7                            Chlorpyrifos                    46
+8                            Cypermethrin                    85
+9                            Deltamethrin                   443
+10                               Diazinon                    37
+11                               Dieldrin                   296
+12                      Diethylene glycol                    69
+13                             Dimethoate                     9
+14                               Glycerol                    48
+15                             Heptachlor                    82
+16                              Ibuprofen                    26
+17                                 Kepone                    47
+18                       Methyl parathion                    67
+19                               Nicotine                    29
+20                              Parathion                    82
+21                             Permethrin                   507
+22                              Saccharin                    47
+23                        Sodium benzoate                    15
+24                            Thiacloprid                    61
+25                 Tri-o-cresyl phosphate                   148
+26                            Trichlorfon                    90
+27     Triphenyl phosphates isopropylated                    31
+28  Tris(1,3-dichloro-2-propyl) phosphate                    29
+29          Tris(2-chloroethyl) phosphate                    14
+30       Tris(2-chloroisopropyl)phosphate                    23
+31           Tris(methylphenyl) phosphate                   148
+32                          Valproic acid                    39
+33    tert-Butylphenyl diphenyl phosphate                   103, None)"
+15,"('SELECT che.preferred_name, SUM(d.n_swim_bladder_deflated) AS total_swim_bladder_deflated\nFROM devtox_data_sum d\nJOIN chemicals che ON d.chemical_id = che.chemical_id\nWHERE d.n_swim_bladder_deflated > 0\nGROUP BY che.preferred_name;',                            preferred_name  total_swim_bladder_deflated
+0         2-Ethylhexyl diphenyl phosphate                           16
+1         3,3',5,5'-Tetrabromobisphenol A                            7
+2                             Acetamiprid                            4
+3                                Aldicarb                           27
+4                               Allethrin                           36
+5                                 Benomyl                            5
+6                              Chloramben                            2
+7                            Chlorpyrifos                           39
+8                            Cypermethrin                           13
+9                            Deltamethrin                           44
+10                               Diazinon                            8
+11                               Dieldrin                          181
+12                      Diethylene glycol                            2
+13                             Dimethoate                            4
+14                               Glycerol                            1
+15                             Heptachlor                           39
+16                              Ibuprofen                            3
+17                                 Kepone                           49
+18                       Methyl parathion                            7
+19                               Nicotine                           36
+20                              Parathion                            1
+21                             Permethrin                           90
+22                              Saccharin                            2
+23                        Sodium benzoate                            1
+24                            Thiacloprid                            5
+25                 Tri-o-cresyl phosphate                           11
+26                            Trichlorfon                           49
+27     Triphenyl phosphates isopropylated                          148
+28  Tris(1,3-dichloro-2-propyl) phosphate                            3
+29          Tris(2-chloroethyl) phosphate                            1
+30       Tris(2-chloroisopropyl)phosphate                           55
+31           Tris(methylphenyl) phosphate                           20
+32                          Valproic acid                          160
+33    tert-Butylphenyl diphenyl phosphate                           31, None)"
+16,"(""SELECT * FROM behavior_data WHERE devtox_data_id IN (SELECT devtox_data_id FROM devtox_data dev JOIN chemicals che ON dev.chemical_id = che.chemical_id WHERE che.dtxsid = 'DTXSID5020732');"",        devtox_data_id phase_code  bin_id  distance_moved  time_end
+0                1153         L1      51        79.39530         1
+1                1153         L1       2        86.42750         2
+2                1153         L1       3        51.84010         3
+3                1153         L1       4        22.95810         4
+4                1153         L1       5         0.87298         5
+...               ...        ...     ...             ...       ...
+51235           24287         D3     187        73.23400       176
+51236           24287         D3     188       148.26100       177
+51237           24287         D3     189       235.57200       178
+51238           24287         D3     190       345.18900       179
+51239           24287         D3     191       285.89600       180
+
+[51240 rows x 5 columns], None)"
+17,"(""SELECT plate_id, plate_name FROM plates WHERE source_code = (SELECT source_code FROM sources WHERE source_name = 'biobide');"",     plate_id                         plate_name
+0          1        biobide_1588_1_v1:Plate3-R1
+1          2        biobide_1588_1_v1:Plate3-R2
+2          3        biobide_1588_1_v1:Plate3-R3
+3          4        biobide_1359_1_v1:Plate2-R1
+4          5        biobide_1359_1_v1:Plate2-R2
+5          6        biobide_1359_1_v1:Plate2-R3
+6          7          biobide_vpa1_v2:Plate1-R1
+7          8          biobide_vpa1_v2:Plate1-R2
+8          9          biobide_vpa1_v2:Plate1-R3
+9         10          biobide_nc_1_v1:Plate1-R1
+10        11          biobide_nc_1_v1:Plate2-R1
+11        12          biobide_nc_1_v1:Plate3-R1
+12        13          biobide_nc_1_v1:Plate4-R1
+13        14          biobide_nc_1_v1:Plate5-R1
+14        15  biobide_nc_1_v1:Controls_Plate-R2
+15        16  biobide_nc_1_v1:Controls_Plate-R1
+16       150                      A10_sqPlate10
+17       151                      A11_sqPlate11
+18       152                      A12_sqPlate12
+19       153                        A1_sqPlate1
+20       154                        A2_sqPlate2
+21       155                        A3_sqPlate3
+22       156                        A4_sqPlate4
+23       157                        A5_sqPlate5
+24       158                        A6_sqPlate6
+25       159                        A7_sqPlate7
+26       160                        A8_sqPlate8
+27       161                        A9_sqPlate9
+28       162                      B10_sqPlate22
+29       163                      B11_sqPlate23
+30       164                  B12_Plate1_repeat
+31       165                  B12_Plate2_repeat
+32       166                  B12_Plate3_repeat
+33       167                      B12_sqPlate24
+34       168                   B1_Plate1_repeat
+35       169                       B1_sqPlate13
+36       170                       B2_sqPlate14
+37       171                       B3_sqPlate15
+38       172                       B4_sqPlate16
+39       173                       B5_sqPlate17
+40       174                       B6_sqPlate18
+41       175                       B7_sqPlate19
+42       176                       B8_sqPlate20
+43       177                       B9_sqPlate21
+44       178                       C1_sqPlate25
+45       179                       C2_sqPlate26
+46       180                       C3_sqPlate27
+47       181                   C4_Plate1_repeat
+48       182                   C4_Plate2_repeat
+49       183                   C4_Plate3_repeat
+50       184                   CPF_sqPlate28-R1
+51       185                   CPF_sqPlate28-R2, None)"
+18,"(""SELECT ed.* \nFROM endpoint_data ed \nJOIN devtox_data dev ON ed.devtox_data_id = dev.devtox_data_id \nJOIN chemicals che ON dev.chemical_id = che.chemical_id \nWHERE che.casrn = '15687-27-1';"",        devtox_data_id  endpoint_id  endpoint_value  endpoint_value_denom  \
+0                1153            1        1.946609              2.115273   
+1                1153            2        2.592226              2.578903   
+2                1153            3        2.611633              1.371360   
+3                1153            4        2.425201              1.613172   
+4                1153            5     1033.988050            987.591905   
+...               ...          ...             ...                   ...   
+13363           24287           20       12.783500             15.726500   
+13364           24287           21        0.274491              0.309252   
+13365           24287           22        0.338941              0.333178   
+13366           24287           23        0.267798              0.299303   
+13367           24287           24        0.326532              0.320978   
+
+       endpoint_value_norm  
+0                -7.973650  
+1                 0.516600  
+2                90.441100  
+3                50.337441  
+4                 4.697907  
+...                    ...  
+13363            12.783500  
+13364           -11.240521  
+13365             1.729705  
+13366           -10.525997  
+13367             1.730108  
+
+[13368 rows x 5 columns], None)"
+19,"(""SELECT b.* \nFROM bins b \nJOIN phase_bins pb ON b.bin_id = pb.bin_id \nWHERE pb.phase_code = 'L2';"",     bin_id          bin_range
+0       21    0:20:00-0:21:00
+1       22    0:21:00-0:22:00
+2       23    0:22:00-0:23:00
+3       24    0:23:00-0:24:00
+4       25    0:24:00-0:25:00
+5       26    0:25:00-0:26:00
+6       27    0:26:00-0:27:00
+7       28    0:27:00-0:28:00
+8       29    0:28:00-0:29:00
+9       30    0:29:00-0:30:00
+10      31    0:30:00-0:31:00
+11      32    0:31:00-0:32:00
+12      33    0:32:00-0:33:00
+13      34    0:33:00-0:34:00
+14      35    0:34:00-0:35:00
+15      36    0:35:00-0:36:00
+16      37    0:36:00-0:37:00
+17      38    0:37:00-0:38:00
+18      39    0:38:00-0:39:00
+19      40    0:39:00-0:40:00
+20      82  00:30:00-00:31:00
+21      83  00:31:00-00:32:00
+22      84  00:32:00-00:33:00
+23      85  00:33:00-00:34:00
+24      86  00:34:00-00:35:00
+25      87  00:35:00-00:36:00
+26      88  00:36:00-00:37:00
+27      89  00:37:00-00:38:00
+28      90  00:38:00-00:39:00
+29      91  00:39:00-00:40:00, None)"
+20,"(""SELECT dev.well_position \nFROM devtox_data dev \nJOIN plates pl ON dev.plate_id = pl.plate_id \nWHERE pl.source_code = (SELECT source_code FROM sources WHERE source_name = 'osu');"",      well_position
+0              A01
+1              B01
+2              C01
+3              D01
+4              E01
+...            ...
+6139           D12
+6140           E12
+6141           F12
+6142           G12
+6143           H12
+
+[6144 rows x 1 columns], None)"
+21,"('SELECT e.endpoint_name, che.preferred_name FROM endpoint_data ed JOIN devtox_data dev ON ed.devtox_data_id = dev.devtox_data_id JOIN chemicals che ON dev.chemical_id = che.chemical_id JOIN endpoints e ON ed.endpoint_id = e.endpoint_id;',             endpoint_name preferred_name
+0       log10_D1@both_auc       Dieldrin
+1       log10_D2@both_auc       Dieldrin
+2       log10_L1@both_auc       Dieldrin
+3       log10_L2@both_auc       Dieldrin
+4                      D1       Dieldrin
+...                   ...            ...
+404419        L2@both_auc       Dieldrin
+404420     Zt_LD_spearman       Dieldrin
+404421      Zt_LD_pearson       Dieldrin
+404422        LD_spearman       Dieldrin
+404423         LD_pearson       Dieldrin
+
+[404424 rows x 2 columns], None)"
+22,"(""SELECT p.phase_code, b.bin_id, b.bin_range \nFROM phases p \nJOIN phase_bins pb ON p.phase_code = pb.phase_code \nJOIN bins b ON pb.bin_id = b.bin_id \nWHERE p.source_code = (SELECT source_code FROM plates WHERE plate_name = 'osu_nc_2_v2:OECD-0162');"",     phase_code  bin_id          bin_range
+0           L1       1      Start-0:01:00
+1           L1       2    0:01:00-0:02:00
+2           L1       3    0:02:00-0:03:00
+3           L1       4    0:03:00-0:04:00
+4           L1       5    0:04:00-0:05:00
+..         ...     ...                ...
+223         D3     188  02:56:00-02:57:00
+224         D3     189  02:57:00-02:58:00
+225         D3     190  02:58:00-02:59:00
+226         D3     191  02:59:00-03:00:00
+227         D3     192  02:59:00-02:59:59
+
+[228 rows x 3 columns], None)"
+23,"(""SELECT che.preferred_name, dev.concentration \nFROM devtox_data dev \nJOIN chemicals che ON dev.chemical_id = che.chemical_id \nJOIN plates pl ON dev.plate_id = pl.plate_id \nJOIN phases p ON pl.source_code = p.source_code \nWHERE p.phase_code = 'L0';"",               preferred_name  concentration
+0                 Permethrin           75.0
+1                 Permethrin           75.0
+2                 Permethrin           50.0
+3                 Permethrin           50.0
+4                 Permethrin           10.0
+...                      ...            ...
+6655  Tri-o-cresyl phosphate            0.1
+6656  Tri-o-cresyl phosphate            0.1
+6657  Tri-o-cresyl phosphate            0.1
+6658  Tri-o-cresyl phosphate            0.1
+6659  Tri-o-cresyl phosphate            0.1
+
+[6660 rows x 2 columns], None)"
+24,"(""SELECT e.endpoint_name, ed.endpoint_value \nFROM endpoint_data ed \nJOIN devtox_data dev ON ed.devtox_data_id = dev.devtox_data_id \nJOIN endpoints e ON ed.endpoint_id = e.endpoint_id \nJOIN plates pl ON dev.plate_id = pl.plate_id \nWHERE dev.well_position = 'A1' AND pl.plate_name = 'biobide_vpa1_v2:Plate1-R1';"",         endpoint_name  endpoint_value
+0   log10_D1@both_auc        2.059944
+1   log10_D2@both_auc        2.470091
+2   log10_L1@both_auc        2.860791
+3   log10_L2@both_auc        2.861053
+4                  D1     1241.139000
+5                  D2     2294.680350
+6                  L1      993.248100
+7                  L2     1032.514550
+8           D1@up_auc       95.561075
+9         D1@down_auc       19.239500
+10        D1@both_auc      114.800575
+11          D2@up_auc      290.957125
+12        D2@down_auc        4.225900
+13        D2@both_auc      295.183025
+14          L1@up_auc      725.756425
+15        L1@down_auc        0.000000
+16        L1@both_auc      725.756425
+17          L2@up_auc      726.195225
+18        L2@down_auc        0.000000
+19        L2@both_auc      726.195225
+20     Zt_LD_spearman        0.242501
+21      Zt_LD_pearson        0.272628
+22        LD_spearman        0.237857
+23         LD_pearson        0.266068, None)"

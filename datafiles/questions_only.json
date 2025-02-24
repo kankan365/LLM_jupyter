@@ -1,0 +1,102 @@
+[
+    {
+        "index": 0,
+        "Question": "How many chemicals are involved in this study?"
+    },
+    {
+        "index": 1,
+        "Question": "List all endpoints in this study."
+    },
+    {
+        "index": 2,
+        "Question": "What are the names of all the plates and their stages?"
+    },
+    {
+        "index": 3,
+        "Question": "How many unique well types are recorded?"
+    },
+    {
+        "index": 4,
+        "Question": "What are the details of the phases recorded in the study?"
+    },
+    {
+        "index": 5,
+        "Question": "How many records are in the behavior data?"
+    },
+    {
+        "index": 6,
+        "Question": "What are the concentration units used in devtox data?"
+    },
+    {
+        "index": 7,
+        "Question": "List all the bins and their ranges."
+    },
+    {
+        "index": 8,
+        "Question": "What are the sources of the plates used in this study?"
+    },
+    {
+        "index": 9,
+        "Question": "How many endpoint data records are available?"
+    },
+    {
+        "index": 10,
+        "Question": "Can you give me the list of behavior_data where the chemical name is 'Ibuprofen'?"
+    },
+    {
+        "index": 11,
+        "Question": "How many instances of malformed dead organisms have a positive reaction to chemicals based on this study?"
+    },
+    {
+        "index": 12,
+        "Question": "What is the distribution of the chemical name of malformations in dead organisms that have a positive reaction?"
+    },
+    {
+        "index": 13,
+        "Question": "Top 10 chemical had the most effect on all the deflated swim bladders in this study."
+    },
+    {
+        "index": 14,
+        "Question": "Can you provide a pie chart showing the distribution of malformed positive cases across different chemicals in the devtox_data_sum dataset?"
+    },
+    {
+        "index": 15,
+        "Question": "Can you provide a pie chart showing the distribution of bladder deflated positive cases across different chemicals in the devtox_data_sum dataset?"
+    },
+    {
+        "index": 16,
+        "Question": "Can you give me the list of behavior_data where the dtxsid is 'DTXSID5020732'?"
+    },
+    {
+        "index": 17,
+        "Question": "Which plates are associated with the source 'biobide'?"
+    },
+    {
+        "index": 18,
+        "Question": "List all endpoint data for the chemical with CASRN '15687-27-1'."
+    },
+    {
+        "index": 19,
+        "Question": "Which bins are associated with the phase 'L2'?"
+    },
+    {
+        "index": 20,
+        "Question": "What is the list of all well positions for plates associated with source 'osu'?"
+    },
+    {
+        "index": 21,
+        "Question": "List all endpoints with associated chemicals by their preferred names."
+    },
+    {
+        "index": 22,
+        "Question": "What are the phases and bins associated with plate 'osu_nc_2_v2:OECD-0162'?"
+    },
+    {
+        "index": 23,
+        "Question": "List the chemicals and their concentration levels for a specific phase 'L0'."
+    },
+    {
+        "index": 24,
+        "Question": "What are the endpoints and their values for the well position 'A1' on plate 'biobide_vpa1_v2:Plate1-R1'?"
+    }
+]

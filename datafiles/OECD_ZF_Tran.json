@@ -1,0 +1,104 @@
+{
+    "Train": [
+        {
+            "Question": "How many chemicals are involved in this study?",
+            "sql": "SELECT COUNT(*) FROM chemicals;"
+        },
+        {
+            "Question": "List all endpoints in this study.",
+            "sql": "SELECT endpoint_id, endpoint_name, endpoint_desc FROM endpoints;"
+        },
+        {
+            "Question": "What are the names of all the plates and their stages?",
+            "sql": "SELECT plate_name, plate_stage FROM plates;"
+        },
+        {
+            "Question": "How many unique well types are recorded?",
+            "sql": "SELECT COUNT(DISTINCT well_type) FROM well_types;"
+        },
+        {
+            "Question": "What are the details of the phases recorded in the study?",
+            "sql": "SELECT * FROM phases;"
+        },
+        {
+            "Question": "How many records are in the behavior data?",
+            "sql": "SELECT COUNT(*) FROM behavior_data;"
+        },
+        {
+            "Question": "What are the concentration units used in devtox data?",
+            "sql": "SELECT DISTINCT concentration_unit FROM devtox_data;"
+        },
+        {
+            "Question": "List all the bins and their ranges.",
+            "sql": "SELECT bin_id, bin_range FROM bins;"
+        },
+        {
+            "Question": "What are the sources of the plates used in this study?",
+            "sql": "SELECT DISTINCT source_code FROM plates;"
+        },
+        {
+            "Question": "How many endpoint data records are available?",
+            "sql": "SELECT COUNT(*) FROM endpoint_data;"
+        },
+        {
+            "Question": "Can you give me the list of behavior_data where the chemical name is 'Ibuprofen'?",
+            "sql": "SELECT * FROM behavior_data WHERE devtox_data_id IN (SELECT devtox_data_id FROM devtox_data dev JOIN chemicals che ON dev.chemical_id = che.chemical_id WHERE che.preferred_name = 'xxx');"
+        },
+        {
+            "Question":"How many instances of malformed dead organisms have a positive reaction to chemicals based on this study?",
+            "sql":"SELECT * FROM devtox_data_sum where n_malformed_dead > 0"
+        },
+        {
+            "Question":"What is the distribution of the chemical name of malformations in dead organisms that have a positive reaction?",
+            "sql":"SELECT  che.preferred_name ,COUNT(*) AS data_count FROM devtox_data dev join chemicals che on dev.chemical_id=che.chemical_id WHERE malformed_dead = 1 GROUP BY dev.chemical_id; "
+        },
+        {
+            "Question":"Top 10 chemical had the most effect on all the deflated swim bladders in this study.",
+            "sql":"SELECT  che.preferred_name ,COUNT(*) AS data_count FROM devtox_data dev join chemicals che on dev.chemical_id=che.chemical_id WHERE swim_bladder_deflated>0 GROUP BY dev.chemical_id order by data_count desc limit 10; "
+        },
+        {
+            "Question":"Can you provide a pie chart showing the distribution of malformed positive cases across different chemicals in the devtox_data_sum dataset?",
+            "sql":"SELECT chemical_id, SUM(n_malformed_dead) AS total_malformed_dead FROM devtox_data_sum GROUP BY chemical_id;"
+        },
+        {
+            "Question":"Can you provide a pie chart showing the distribution of bladder deflated positive cases across different chemicals in the devtox_data_sum dataset?",
+            "sql":"SELECT chemical_id, SUM(n_swim_bladder_deflated) AS total_malformed_dead FROM devtox_data_sum GROUP BY chemical_id;"
+        },
+        {
+            "Question": "Can you give me the list of behavior_data where the dtxsid is 'DTXSID5020732'?",
+            "sql": "SELECT * FROM behavior_data WHERE devtox_data_id IN (SELECT devtox_data_id FROM devtox_data dev JOIN chemicals che ON dev.chemical_id = che.chemical_id WHERE che.dtxsid = 'DTXSID5020732');"
+        },
+        {
+            "Question": "Which plates are associated with the source 'biobide'?",
+            "sql": "SELECT plate_id, plate_name FROM plates WHERE source_code = (SELECT source_code FROM sources WHERE source_name = 'biobide');"
+        },
+        {
+            "Question": "List all endpoint data for the chemical with CASRN '15687-27-1'.",
+            "sql": "SELECT ed.* FROM endpoint_data ed JOIN devtox_data dev ON ed.devtox_data_id = dev.devtox_data_id JOIN chemicals che ON dev.chemical_id = che.chemical_id WHERE che.casrn = '15687-27-1';"
+        },
+        {
+            "Question": "Which bins are associated with the phase 'L2'?",
+            "sql": "SELECT b.* FROM bins b JOIN phase_bins pb ON b.bin_id = pb.bin_id JOIN phases p ON pb.phase_code = p.phase_code WHERE p.phase_code = 'L2';"
+        },
+        {
+            "Question": "What is the list of all well positions for plates associated with source 'osu'?",
+            "sql": "SELECT DISTINCT dev.well_position FROM devtox_data dev JOIN plates pl ON dev.plate_id = pl.plate_id WHERE pl.source_code = (SELECT source_code FROM sources WHERE source_name = 'osu');"
+        },
+        {
+            "Question": "List all endpoints with associated chemicals by their preferred names.",
+            "sql": "SELECT e.endpoint_name, che.preferred_name FROM endpoint_data ed JOIN devtox_data dev ON ed.devtox_data_id = dev.devtox_data_id JOIN chemicals che ON dev.chemical_id = che.chemical_id JOIN endpoints e ON ed.endpoint_id = e.endpoint_id;"
+        },
+        {
+            "Question": "What are the phases and bins associated with plate 'osu_nc_2_v2:OECD-0162'?",
+            "sql": "SELECT p.phase_code, b.bin_id, b.bin_range FROM phases p JOIN phase_bins pb ON p.phase_code = pb.phase_code JOIN bins b ON pb.bin_id = b.bin_id WHERE p.source_code = (SELECT source_code FROM plates WHERE plate_name = 'osu_nc_2_v2:OECD-0162');"
+        },
+        {
+            "Question": "List the chemicals and their concentration levels for a specific phase 'L0'.",
+            "sql": "SELECT che.preferred_name, dev.concentration FROM devtox_data dev JOIN chemicals che ON dev.chemical_id = che.chemical_id JOIN plates pl ON dev.plate_id = pl.plate_id JOIN phases p ON pl.source_code = p.source_code WHERE p.phase_code = 'L0';"
+        },
+        {
+            "Question": "What are the endpoints and their values for the well position 'A1' on plate 'biobide_vpa1_v2:Plate1-R1'?",
+            "sql": "SELECT e.endpoint_name, ed.endpoint_value FROM endpoint_data ed JOIN devtox_data dev ON ed.devtox_data_id = dev.devtox_data_id JOIN endpoints e ON ed.endpoint_id = e.endpoint_id JOIN plates pl ON dev.plate_id = pl.plate_id WHERE dev.well_position = 'A1' AND pl.plate_name = 'biobide_vpa1_v2:Plate1-R1';"
+        }
+    ]
+}
