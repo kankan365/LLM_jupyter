@@ -98,5 +98,94 @@
     {
         "index": 24,
         "Question": "What are the endpoints and their values for the well position 'A1' on plate 'biobide_vpa1_v2:Plate1-R1'?"
-    }
+    },
+    {
+            "index": 25,
+            "Question": "How many unique chemicals are tested and what are their names?"
+            
+        },
+        {
+            "index": 26
+            "Question": "List all endpoints and their descriptions"
+            
+        },
+        {
+            "index": 27,
+            "Question": "What are the names of all the plates and their stages?"
+            
+        },
+        {
+            "index": 28,
+            "Question": "How many unique well types are recorded?"
+            
+        },
+        {
+            "index": 29,
+            "Question": "List the bins of the phases recorded in the database?"
+            
+        },
+        {
+            "index": 30,
+            "Question": "How many records are there in the behavior data?"
+            
+        },
+        {
+            "index": 31,
+            "Question": "List all unique vehicles stored in the database "
+        },
+        {
+            "index": 32,
+            "Question": "List all the bins and their ranges."
+        },
+        {
+            "index": 33,
+            "Question": "What are the sources of the plates used in this study?"
+        },
+        {
+            "index": 34,
+            "Question": "How many endpoint data records are available?"
+        },
+        {
+            "index": 35,
+            "Question": "List the behavior data of chemical which name is 'Ibuprofen'?"
+        },
+        {
+            "index": 36,
+            "Question": "List the behavior data of chemical which dtxsid is 'DTXSID5020732'?"
+        },
+        {
+            "index": 37,
+            "Question": "List the plates that are tested by the source of 'biobide'?"
+        },
+        {
+            "index": 38,
+            "Question": "List the endpoint data of the chemical with CASRN '15687-27-1'."
+        },
+        {
+            "index": 39,
+            "Question": "What are the bins associated with the phase 'L2'?"
+        },
+        {
+            "index": 40,
+            "Question": "List the summary of devtox data for the chemical with CASRN = ‘15687-27-1’"
+         },
+        {
+            "index": 41,
+            "Question": "List the top 10 chemicals with highest number of malformed and dead"
+        },
+        {
+            "index": 42,
+            "Question": "What is the time frame of plates tested by the source “biobide"
+
+        },
+        {
+            "index": 43,
+            "Question": "List the top 10 chemicals with highest percentage of malformed and dead across all the associated plates ."
+        },
+        {
+            "index": 44,
+            "Question": "What is the devtox data at the well position 'A1' on plate 'biobide_vpa1_v2:Plate1-R1'"
+        
+        }
+
 ]
